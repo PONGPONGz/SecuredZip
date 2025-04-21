@@ -105,14 +105,15 @@ class SecureZipGUI:
         self.progress.pack(fill=tk.X, pady=5, side=tk.BOTTOM)
     
     def toggle_confirm_visibility(self, *args):
-        if self.action_var.get() == "compress":
-            self.confirm_frame.pack(fill=tk.X, pady=5)
-        else:
-            self.confirm_frame.pack_forget()
-        
         # Clear password fields when changing modes
         self.password_var.set("")
         self.confirm_var.set("")
+        
+        # Show/hide confirm password field based on action
+        if self.action_var.get() == "compress":
+            self.confirm_frame.pack(fill=tk.X, pady=5, after=self.password_entry.master)
+        else:
+            self.confirm_frame.pack_forget()
     
     def browse_file(self):
         filetypes = [("All files", "*.*")]

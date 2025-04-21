@@ -1,0 +1,2 @@
+cryptography>=39.0.0
+zlib-wrapper>=0.1.3 
